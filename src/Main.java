@@ -2,11 +2,19 @@
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        DrzewoBST root = new DrzewoBST();
-        root.add(20);
-        root.add(15);
-        root.add(17);
-        System.out.println(root.Remove(root.getRoot(), 20).getDane());
+        DrzewoBST tree = new DrzewoBST();
+        tree.add(tree.getRoot(),20);
+        tree.add(tree.getRoot(),30);
+        tree.add(tree.getRoot(),27);
+        tree.add(tree.getRoot(),10);
+        tree.add(tree.getRoot(),15);
+        tree.add(tree.getRoot(),17);
+        tree.add(tree.getRoot(),16);
+        tree.add(tree.getRoot(),18);
+        tree.setRoot(tree.Remove(tree.getRoot(), 30));
+        System.out.println(tree.Getmin(tree.getRoot()).getDane());
+        System.out.println(tree.GetMax(tree.getRoot()).getDane());
+        System.out.println(tree.Find(tree.getRoot(),15).getDane());
 
 
     }
