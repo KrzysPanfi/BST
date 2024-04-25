@@ -25,19 +25,55 @@ public class DrzewoBST {
     }
 
 
-    public void remove(int liczba) {
-        Wezel tmp = root;
-        while (true) {
-            if (tmp.getDane() == liczba) {
-                tmp = tmp.getPrawodziecko();
-                tmp.setPrawodziecko(null);
-                break;
-            } else if (liczba > tmp.getDane()&&tmp.getPrawodziecko()!=null) {
-                tmp = tmp.getPrawodziecko();
-            } else if (liczba <= tmp.getDane()&&tmp.getLewedziecko()!=null) {
-                tmp = tmp.getLewedziecko();
-            }
+    Wezel Remove(Wezel tmp, int key) {
+
+        if (tmp == null) {
+            return tmp;
         }
+
+
+        if (key < tmp.getDane()) {
+            tmp.setLewedziecko(Remove(tmp.getLewedziecko(), key));
+        }
+
+        else if (key > tmp.getDane()) {
+            tmp.setPrawodziecko(Remove(tmp.getPrawodziecko(), key));
+        }
+
+        else {
+
+            if (tmp.getLewedziecko() == null) {
+                return tmp.getPrawodziecko();
+            } else if (tmp.getPrawodziecko() == null) {
+                return tmp.getLewedziecko();
+            }
+
+
+            tmp.setDane(Getmin(tmp.getPrawodziecko()));
+
+            tmp.setPrawodziecko(Remove(tmp.getPrawodziecko(), tmp.getDane()));
+        }
+
+        return root;
     }
-    public void Getmin()
+  public  int Getmin(Wezel root) {
+        int minv = root.getDane();
+        while (root.getLewedziecko() != null) {
+            minv = root.getLewedziecko().getDane();
+            root = root.getLewedziecko();
+        }
+        return minv;
+    }
+    public int GetMax(Wezel root){
+        int maxv= root.getDane();
+        while(root.getPrawodziecko()!=null){
+            maxv=root.getPrawodziecko().getDane();
+            root = root.getPrawodziecko();
+        }
+        return maxv;
+    }
+
+    public Wezel getRoot() {
+        return root;
+    }
 }
