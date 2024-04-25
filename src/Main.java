@@ -4,5 +4,7 @@ public class Main {
     public static void main(String[] args) {
      DrzewoBST root = new DrzewoBST();
      root.add(20);
+     root.add(15);
+     root.remove(10);
         }
     }
