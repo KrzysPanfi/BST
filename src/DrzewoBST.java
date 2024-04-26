@@ -23,27 +23,25 @@ public class DrzewoBST {
         }
     }
 
-  public   Wezel Remove(Wezel tmp, int key) {
+    public Wezel Remove(Wezel tmp, int key) {
 
         if (this.root == null) {
             return tmp;
         }
 
-        if (key < tmp.getDane()&&tmp.getLewedziecko()!=null) {
-           tmp.setLewedziecko(Remove(tmp.getLewedziecko(), key));
-        }
-        else if (key > tmp.getDane() && tmp.getPrawodziecko() !=null) {
+        if (key < tmp.getDane() && tmp.getLewedziecko() != null) {
+            tmp.setLewedziecko(Remove(tmp.getLewedziecko(), key));
+        } else if (key > tmp.getDane() && tmp.getPrawodziecko() != null) {
             tmp.setPrawodziecko(Remove(tmp.getPrawodziecko(), key));
-        }
-        else {
+        } else {
 
             if (tmp.getLewedziecko() == null) {
                 return tmp.getPrawodziecko();
             } else if (tmp.getPrawodziecko() == null) {
                 return tmp.getLewedziecko();
             }
-                tmp.setDane(Getmin(tmp.getPrawodziecko()).getDane());
-                tmp.setPrawodziecko(Remove(tmp.getPrawodziecko(), tmp.getDane()));
+            tmp.setDane(Getmin(tmp.getPrawodziecko()).getDane());
+            tmp.setPrawodziecko(Remove(tmp.getPrawodziecko(), tmp.getDane()));
         }
         return tmp;
     }
@@ -51,7 +49,7 @@ public class DrzewoBST {
 
     public Wezel Getmin(Wezel tmp) {
         while (tmp.getLewedziecko() != null) {
-            tmp =  tmp.getLewedziecko();
+            tmp = tmp.getLewedziecko();
         }
         return tmp;
     }
@@ -62,7 +60,8 @@ public class DrzewoBST {
         }
         return tmp;
     }
-    public Wezel Find(Wezel tmp,int key) {
+
+    public Wezel Find(Wezel tmp, int key) {
         if (tmp == null || tmp.getDane() == key) {
             return tmp;
         }
@@ -70,10 +69,16 @@ public class DrzewoBST {
         if (tmp.getDane() < key) {
             return Find(tmp.getPrawodziecko(), key);
         }
-            return Find(tmp.getLewedziecko(), key);
+        return Find(tmp.getLewedziecko(), key);
 
     }
-
+    void inorder(Wezel root) {
+        if (root != null) {
+            inorder(root.getLewedziecko());
+            System.out.print(root.getDane() + " ");
+            inorder(root.getPrawodziecko());
+        }
+    }
 
     public Wezel getRoot() {
         return root;
