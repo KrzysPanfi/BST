@@ -33,7 +33,7 @@ public class DrzewoBST {
             tmp.setLewedziecko(Remove(tmp.getLewedziecko(), key));
         } else if (key > tmp.getDane() && tmp.getPrawodziecko() != null) {
             tmp.setPrawodziecko(Remove(tmp.getPrawodziecko(), key));
-        } else {
+        } else  if (key== tmp.getDane()){
 
             if (tmp.getLewedziecko() == null) {
                 return tmp.getPrawodziecko();
@@ -62,21 +62,25 @@ public class DrzewoBST {
     }
 
     public Wezel Find(Wezel tmp, int key) {
-        if (tmp == null || tmp.getDane() == key) {
-            return tmp;
+
+
+
+            if (tmp == null || tmp.getDane() == key) {
+                return tmp;
+            }
+
+            if (tmp.getDane() < key) {
+                return Find(tmp.getPrawodziecko(), key);
+            }
+            return Find(tmp.getLewedziecko(), key);
         }
 
-        if (tmp.getDane() < key) {
-            return Find(tmp.getPrawodziecko(), key);
-        }
-        return Find(tmp.getLewedziecko(), key);
 
-    }
-    void inorder(Wezel root) {
-        if (root != null) {
-            inorder(root.getLewedziecko());
-            System.out.print(root.getDane() + " ");
-            inorder(root.getPrawodziecko());
+    void inorder(Wezel tmp) {
+        if (tmp != null) {
+            inorder(tmp.getLewedziecko());
+            System.out.print(tmp.getDane() + " ");
+            inorder(tmp.getPrawodziecko());
         }
     }
 

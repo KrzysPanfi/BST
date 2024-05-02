@@ -11,11 +11,11 @@ public class Main {
         tree.add(tree.getRoot(), 17);
         tree.add(tree.getRoot(), 16);
         tree.add(tree.getRoot(), 18);
-        tree.setRoot(tree.Remove(tree.getRoot(), 0));
+        tree.Remove(tree.getRoot(), 10);
         tree.inorder(tree.getRoot());
       System.out.println(tree.Getmin(tree.getRoot()).getDane());
         System.out.println(tree.GetMax(tree.getRoot()).getDane());
-        System.out.println(tree.Find(tree.getRoot(), 8).getDane());
+        System.out.println(tree.Find(tree.getRoot(), 16).getDane());
 
 
 
