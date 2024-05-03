@@ -1,5 +1,3 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
         DrzewoBST tree = new DrzewoBST();
@@ -13,11 +11,14 @@ public class Main {
         tree.add(tree.getRoot(), 18);
         tree.Remove(tree.getRoot(), 10);
         tree.inorder(tree.getRoot());
-      System.out.println(tree.Getmin(tree.getRoot()).getDane());
+        System.out.println("");
+        System.out.println(tree.Getmin(tree.getRoot()).getDane());
         System.out.println(tree.GetMax(tree.getRoot()).getDane());
-        System.out.println(tree.Find(tree.getRoot(), 16).getDane());
-
-
-
+        try {
+            System.out.println(tree.Find(tree.getRoot(), 16).getDane());
+            System.out.println(tree.Find(tree.getRoot(), 116).getDane());
+        } catch (NullPointerException e) {
+            System.out.println("Brak podanej wartości w drzewie");
+        }
     }
 }
